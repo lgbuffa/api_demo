@@ -109,3 +109,47 @@ git merge develop
 | `git commit --amend -m "new msg"` | Fixes the last commit message (only before pushing) |
 | `git stash` / `git stash pop` | Shelves changes temporarily to switch branches, then brings them back |
 | `git fetch` | Downloads what is new on GitHub without touching your files |
+
+## Hands-on: api_demo step by step
+
+Starting on `master`, add a print to `fetch_machine_alarms.py`, push it to `develop` and open a pull request from `develop` to `master`.
+
+1. Switch to `develop`:
+    ```bash
+    git checkout develop
+    ```
+2. Update `develop` with what is on GitHub:
+    ```bash
+    git pull
+    ```
+3. Open `fetch_machine_alarms.py` and add this line at the end of the file:
+    ```python
+    print(f"Total alarms: {len(alarms)}")
+    ```
+    Then check the change:
+    ```bash
+    git status
+    git diff
+    ```
+4. Stage the change:
+    ```bash
+    git add .
+    ```
+5. Commit it:
+    ```bash
+    git commit -m "Print total number of alarms"
+    ```
+6. Push to GitHub:
+    ```bash
+    git push
+    ```
+7. Create the pull request to `master`:
+    1. Open https://github.com/lgbuffa/api_demo and go to **Pull requests > New pull request**.
+    2. Set **base: `master`** and **compare: `develop`** (the arrow points to the base, the destination).
+    3. Click **Create pull request**, write a title (for example "Print total number of alarms") and confirm.
+    4. Review the **Files changed** tab, then click **Merge pull request > Confirm merge**.
+    5. Back in the terminal, update your local `master`:
+        ```bash
+        git checkout master
+        git pull
+        ```
