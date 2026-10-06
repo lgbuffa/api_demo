@@ -12,3 +12,5 @@ data = response.json()
 alarms = response.json()["data"]
 
 print(json.dumps(data, indent=2))
+
+print(f"Total alarms: {len(alarms)}")
