@@ -2,7 +2,7 @@
 
 ## Basic concepts
 
-Git stores the project history as **commits**; each person works on their own **branch** and only then merges the result into `development`.
+Git stores the project history as **commits**; each person works on their own **branch** and only then merges the result into `develop`.
 
 | Term | What it is |
 | --- | --- |
@@ -11,9 +11,9 @@ Git stores the project history as **commits**; each person works on their own **
 | Branch | A separate line of work; changes there do not affect other branches |
 | Remote (`origin`) | The copy of the repository on GitHub |
 | `master` | Stable code, ready to use |
-| `development` | Where new features are integrated before going to `master` |
+| `develop` | Where new features are integrated before going to `master` |
 
-Rule for the `api_demo` project: nobody commits directly to `master` or `development`. Every change starts on a branch created from `development`.
+Rule for the `api_demo` project: nobody commits directly to `master` or `develop`. Every change starts on a branch created from `develop`.
 
 ## Initial setup and clone
 
@@ -29,9 +29,9 @@ Done once per computer: identify yourself to Git and download the `api_demo` rep
     git clone https://github.com/lgbuffa/api_demo.git
     cd api_demo
     ```
-3. Switch to the `development` branch:
+3. Switch to the `develop` branch:
     ```bash
-    git checkout development
+    git checkout develop
     ```
 4. Create the `.env` from the template (`.env` never goes to GitHub):
     ```bash
@@ -42,11 +42,11 @@ On the first `git push`, Windows opens the browser to log in to GitHub; after th
 
 ## Workflow: from branch to push
 
-Every task follows the same 6 steps, always starting from an up-to-date `development`.
+Every task follows the same 6 steps, always starting from an up-to-date `develop`.
 
-1. Go to `development` and pull the latest changes:
+1. Go to `develop` and pull the latest changes:
     ```bash
-    git checkout development
+    git checkout develop
     git pull
     ```
 2. Create your branch from it (`-b` creates the branch and switches to it):
@@ -75,25 +75,25 @@ Branch names: `feature/...` for something new, `fix/...` for a bug fix. Before `
 
 ## Integrating your work: pull request and merge
 
-A branch gets into `development` through a **pull request** on GitHub, where someone else reviews it before the merge.
+A branch gets into `develop` through a **pull request** on GitHub, where someone else reviews it before the merge.
 
 1. On GitHub, open the repository and click **Compare & pull request**.
-2. Choose **base: `development`** and **compare: `feature/task-name`**, describe what changed and create the PR.
+2. Choose **base: `develop`** and **compare: `feature/task-name`**, describe what changed and create the PR.
 3. The reviewer approves and clicks **Merge pull request**.
-4. On your computer, update `development` and delete the local branch that was already merged:
+4. On your computer, update `develop` and delete the local branch that was already merged:
     ```bash
-    git checkout development
+    git checkout develop
     git pull
     git branch -d feature/task-name
     ```
 
-When `development` is stable, open a PR from `development` to `master` the same way.
+When `develop` is stable, open a PR from `develop` to `master` the same way.
 
-If someone else changed `development` while you were working, bring those changes into your branch before the PR:
+If someone else changed `develop` while you were working, bring those changes into your branch before the PR:
 
 ```bash
 git checkout feature/task-name
-git merge development
+git merge develop
 ```
 
 ## Useful commands for checking and fixing
